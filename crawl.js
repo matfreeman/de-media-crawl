@@ -75,6 +75,7 @@ function runCrawl(params) {
 
 const [, , baseurl, path] = process.argv;
 if (baseurl && path) {
+    fs.mkdirSync('./downloads');
     init = new Crawler(runCrawl({firstcall: true}))
     init.queue(`${baseurl}${path}`);
     init.on('drain', () => {
